@@ -46,18 +46,7 @@
 
 ​		经过抓包分析，bjfu登录的流程如下：
 
-```flow
- st=>start: 开始
- 
- op1=>operation: 客户端发送登录界面请求
- op2=>operation: 服务器将登录口令lt、excutioon、_eventId插入返回的html中
- op3=>operation: 客户端将账号、密码、lt进行字符串拼接，以"1"、"2"、"3"为三个密钥，进行des加密，加密后的内容作为rsa
- op4=>operation: 客户端发送POST,携带账号长度ul、密码长度pl、rsa、excutioon、_eventId
- op5=>operation: 服务器返回302，客户端携带口令st重定向到主页，
- 
- ed=>end: 结束
- st->op1()->op2->op3->op4->op5->ed
-```
+​			![image-20220611123405727.png](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611123405727.png)
 
 ​		其中需要解决的问题以及解决的方法：
 
