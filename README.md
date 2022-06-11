@@ -26,7 +26,7 @@
 
 ​		6）第一个报文内容如下
 
-​			![image-20220611112018167](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611112018167.png)
+​			![image-20220611121425067](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611121425067.png)
 
 ​		7）将请求荷载内容复制到jsonData.json中
 
