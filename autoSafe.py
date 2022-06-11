@@ -18,7 +18,7 @@ class BJFU:
          "Safari/537.36"
 
     def __init__(self,
-                 uid, psw,
+                 username, password, dataStores_id,
                  url_login='https://cas.bjfu.edu.cn/cas/login?service=https%3A%2F%2Fs.bjfu.edu.cn%2Ftp_fp%2Findex.jsp',
                  url_submit='https://s.bjfu.edu.cn/tp_fp/formParser?status=update&formid=7394b770-ba93-4041-91b7'
                             '-80198a68&workflowAction=startProcess&seqId=&unitId=&applyCode=&workitemid=&process'
@@ -28,8 +28,9 @@ class BJFU:
         self.url_login = url_login
         self.url_submit = url_submit
 
-        self.uid = uid
-        self.psw = psw
+        self.username = username
+        self.password = password
+        self.dataStores_id = dataStores_id
 
     def _page_init(self):
         page_login = self.session.get(self.url_login)
@@ -44,37 +45,28 @@ class BJFU:
 
         data = {
             'rsa': '',
-            'ul': len(self.uid),
-            'pl': len(self.psw),
+            'ul': len(self.username),
+            'pl': len(self.password),
             'lt': html.xpath("/html/body/form/input[@name='lt']/@value")[0],
             'execution': html.xpath("/html/body/form/input[@name='execution']/@value")[0],
             '_eventId': 'submit'
         }
-        data['rsa'] = des(self.uid + self.psw + data['lt'], '1', '2', '3')
-
-        headers = {
-            "Host": "cas.bjfu.edu.cn",
-            "Origin": "https://cas.bjfu.edu.cn",
-            "Referer": self.url_login,
-            "User-Agent": self.UA
-        }
+        data['rsa'] = des(self.username + self.password + data['lt'], '1', '2', '3')
 
         post = self.session.post(
             self.url_login,
-            data=data,
-            headers=headers,
-            allow_redirects=False)
+            data=data)
 
-        if post.status_code == 302:
+        if post.status_code == 200:
             return True
         else:
             self.close()
             return False
 
     def submit(self):
-        with open("jsonData.json", 'r', encoding='UTF-8') as json_file:
-            jsonData = json.load(json_file)
-            jsonData['body']['dataStores']['298d8761-e06c-455f-ae6d-0beb7639']['rowSet']['primary'][0][
+        with open("jsonData.json", 'r', encoding='UTF-8') as jsonData_file:
+            jsonData = json.load(jsonData_file)
+            jsonData['body']['dataStores'][self.dataStores_id]['rowSet']['primary'][0][
                 'JRRQ'] = time.strftime("%Y-%m-%d", time.localtime())
 
             headers = {
@@ -84,10 +76,10 @@ class BJFU:
             post = self.session.post(
                 self.url_submit,
                 data=json.dumps(jsonData),
-                headers=headers,
-                allow_redirects=True)
+                headers=headers)
 
         if post.status_code == 200:
+            print(post.text)
             return True
         else:
             self.close()
@@ -97,11 +89,13 @@ class BJFU:
         self.session.close()
 
 
-bjfu = BJFU("191002309", "07280015")
-if not bjfu.login():
-    print("登陆失败")
+with open("config.json", 'r', encoding='UTF-8') as config_file:
+    config = json.load(config_file)
+    bjfu = BJFU(config["username"], config["password"], config["dataStores_id"])
+    if not bjfu.login():
+        print("登陆失败")
+        if not bjfu.submit():
+            print("提交失败")
 
-if not bjfu.submit():
-    print("提交失败")
-
+    bjfu.close()
 
