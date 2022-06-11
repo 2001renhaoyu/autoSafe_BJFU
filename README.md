@@ -26,7 +26,7 @@
 
 ​		6）第一个报文内容如下
 
-​			![](img\image-20220611121425067.png)
+​			![image-20220611112018167](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611112018167.png)
 
 ​		7）将请求荷载内容复制到jsonData.json中
 
@@ -36,7 +36,7 @@
 
 ​		dataStores_id在抓包数据中可以找到
 
-![image-20220611112018186](img\image-20220611112018186.png)
+​			![image-20220611112018186](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611112018186.png)
 
 （3）运行autoSafe.py
 
@@ -91,4 +91,4 @@ https://s.bjfu.edu.cn/tp_fp/formParser?status=update&formid=7394b770-ba93-4041-9
 
 成功时会返回SYS_PK、SYS_FK
 
-![image-20220611121649919](img\image-20220611121649919.png)
+​			![image-20220611121649919](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611121649919.png)
