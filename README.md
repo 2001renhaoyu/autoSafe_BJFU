@@ -4,7 +4,11 @@
 
 ​	根据BJFU师生报平安网站设计的自动报平安脚本，参考了[k652大佬](https://github.com/k652)写的[daily_fudan](https://github.com/k652/daily_fudan)。
 
-##### 	Todos：
+##### WARNING：
+
+**“师生报平安”是学校决策的重要参考之一，务必认真对待。**
+
+##### 	Features：
 
 - [x] 自动报平安脚本开发
 - [ ] 支持自动获取表单json
