@@ -1,6 +1,6 @@
 # autoSafe_BJFU
 
-### 1、简介
+## 1、简介
 
 ​	根据BJFU师生报平安网站设计的自动报平安脚本，参考了[k652大佬](https://github.com/k652)写的[daily_fudan](https://github.com/k652/daily_fudan)。
 
@@ -10,9 +10,9 @@
 - [ ] 支持自动获取表单json
 - [ ] 云函数部署，定时执行
 
-### 2、操作步骤
+## 2、操作步骤
 
-（1）进行报平安表单数据的手动抓包
+### （1）进行报平安表单数据的手动抓包
 
 ​		1）登录账号后进入报平安界面
 
@@ -32,17 +32,17 @@
 
 ​		8）利用ide将jsonData.json转换为双引号模式（复制过去会报错，自动解决错误即完成双引号转换）
 
-（2）在config.json中填写账号、密码、dataStores_id
+### （2）在config.json中填写账号、密码、dataStores_id
 
 ​		dataStores_id在抓包数据中可以找到
 
 ​			![image-20220611112018186](https://github.com/2001renhaoyu/autoSafe_BJFU/blob/master/img/image-20220611112018186.png)
 
-（3）运行autoSafe.py
+### （3）运行autoSafe.py
 
-### 3、实现原理
+## 3、实现原理
 
-#### （1）登录
+### （1）登录
 
 ​		经过抓包分析，bjfu登录的流程如下：
 
@@ -62,7 +62,7 @@
 
 ​				
 
-#### （2）报平安表单提交
+### （2）报平安表单提交
 
 ​		经过抓包分析，bjfu表单提交只需要向下面的url发送携带jsonData的POST的请求即可。
 
