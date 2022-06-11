@@ -26,7 +26,7 @@
 
 ​		6）第一个报文内容如下
 
-​			![](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20220611121425067.png)
+​			![](img\image-20220611121425067.png)
 
 ​		7）将请求荷载内容复制到jsonData.json中
 
@@ -36,7 +36,7 @@
 
 ​		dataStores_id在抓包数据中可以找到
 
-![image-20220611112018186](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20220611112018186.png)
+![image-20220611112018186](img\image-20220611112018186.png)
 
 （3）运行autoSafe.py
 
@@ -85,4 +85,10 @@ https://s.bjfu.edu.cn/tp_fp/formParser?status=update&formid=7394b770-ba93-4041-9
 
 ​		3）process=bae380db-7db4-4c7c-9458-d79188fa359a表示执行更新表格的进程id，每个人的都一样 
 
-​		4）bjfu对发送的jsonData没有校验，但保险起见，程序每次提交都修改了提交日期
+​		4）bjfu对发送的jsonData没有校验，程序每次提交都修改了提交日期
+
+​		5）提交后会返回相应信息
+
+成功时会返回SYS_PK、SYS_FK
+
+![image-20220611121649919](img\image-20220611121649919.png)
