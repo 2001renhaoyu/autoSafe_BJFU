@@ -94,8 +94,8 @@ with open("config.json", 'r', encoding='UTF-8') as config_file:
     bjfu = BJFU(config["username"], config["password"], config["dataStores_id"])
     if not bjfu.login():
         print("登陆失败")
-        if not bjfu.submit():
-            print("提交失败")
+    if not bjfu.submit():
+        print("提交失败")
 
     bjfu.close()
 
